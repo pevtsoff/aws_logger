@@ -6,11 +6,12 @@ def conf_logger(level=DEBUG):
     console_handler = StreamHandler()
     console_handler.setLevel(level)
     formatter = Formatter(
-        '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+        '[%(asctime)s - %(name)s - %(levelname)s - module:%(filename)s#%(lineno)d '
+        '- func: "%(funcName)s"] message: "%(message)s"'
     )
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
-    logger.setLevel(DEBUG)
+    logger.setLevel(level)
 
     return logger
 
